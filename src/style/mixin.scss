@@ -1,0 +1,12 @@
+@mixin font($size,$lineH){
+  font-family: 'Nunito', sans-serif;
+  size: $size;
+  line-height:$lineH;
+  font-weight: 400;
+}
+
+@mixin flex($jc,$ai){
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+}

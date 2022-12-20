@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { ReactElement } from 'react';
 
-function App() {
+import 'App.scss';
+import { Container } from '@mui/material';
+import { Route, Routes } from 'react-router-dom';
+
+import { Patch } from 'enums';
+import { NotFound, Registered, Home } from 'pages';
+
+const App = (): ReactElement => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className="App">
+      <Routes>
+        <Route path={Patch.HOME} element={<Home />} />
+        <Route path={Patch.SUCCESSFULLY_REGISTERED} element={<Registered />} />
+        <Route path={Patch.NOT_FOUND} element={<NotFound />} />
+      </Routes>
+    </Container>
   );
-}
+};
 
 export default App;

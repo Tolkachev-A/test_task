@@ -1,0 +1,19 @@
+@import "src/style/mixin";
+
+.btn{
+  width: 100px;
+  height: 34px;
+
+  &.css-dhois2-MuiButtonBase-root-MuiButton-root{
+    @include font(16px,26px);
+    border-radius: 80px;
+    text-align: center;
+
+    &:hover{
+      background-color: #FFE302;
+    }
+  }
+
+
+}
+

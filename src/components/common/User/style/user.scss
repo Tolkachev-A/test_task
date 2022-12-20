@@ -1,0 +1,18 @@
+@import "src/style/mixin";
+
+.card-container {
+  padding: 20px;
+  border-radius: 10px;
+
+  .css-46bh2p-MuiCardContent-root{
+    padding: 0;
+
+    &:last-child{
+      padding: 0;
+    }
+  }
+
+  .css-1mdurtu-MuiTypography-root{
+    @include font(16px, 26px);
+  }
+}

@@ -1,0 +1,45 @@
+@import "src/style/mixin";
+
+.sign-up-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .css-395wrf-MuiFormLabel-root-MuiInputLabel-root{
+    color: #7E7E7E;
+  }
+
+  .css-yhypab-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color: #7E7E7E;
+  }
+
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #D0CFCF;
+  }
+
+  .label-phone{
+    color: #7E7E7E;
+    margin-left: 14px;
+  }
+
+  .upload{
+    display: flex;
+
+    .css-1ylzy12-MuiButtonBase-root-MuiButton-root{
+      border-color: #000000;
+      border-radius: 4px 0 0 4px;
+      color: #000000;
+      @include font(16px, 26px);
+      text-transform: none;
+    }
+  }
+
+  .css-395wrf-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
+    @include font(16px, 26px);
+    color: #7E7E7E;
+  }
+
+  .css-pe71c0-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline{
+    border-radius: 0 4px 4px 0;
+  }
+}

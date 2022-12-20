@@ -1,0 +1,21 @@
+@import "src/style/mixin";
+
+.nav-container{
+  margin: 0 2%;
+  .nav{
+    @include flex(space-between,center);
+    height: 60px;
+
+    .logo{
+      @include flex(flex-start,center);
+
+      span{
+        margin-left: 5px;
+      }
+    }
+
+    .btn-block button:first-child{
+      margin-right: 10px;
+    }
+  }
+}

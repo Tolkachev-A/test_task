@@ -1,0 +1,11 @@
+.radio-container{
+  .css-1b50gtk-MuiButtonBase-root-MuiRadio-root{
+    color: #7E7E7E;
+    &.Mui-checked{
+      color: #00BDD3;
+    }
+  }
+  .css-rd7gxz-MuiFormLabel-root.Mui-focused{
+    color: #00BDD3;
+  }
+}
