@@ -2,17 +2,24 @@
 
 .banner-container{
   min-height: calc(100vh - 60px);
-  background-image: url("../../../assets/img/banner.png");
+  background-image: url("../../../assets/img/banner.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  color: #FFFFFF;
-  text-align: center;
-  @include flex(center,center);
 
-  .banner-text{
-    max-width: 380px;
+  .banner-container__fon{
+    text-align: center;
+    @include flex(center,center);
     width: 100%;
+    color: #FFFFFF;
+    min-height: calc(100vh - 60px);
+    background-color:rgba(0, 0, 0, 0.5);
+
+    .banner-text{
+      padding: 0 10px 0 10px;
+      max-width: 380px;
+      width: 100%;
+    }
   }
 }

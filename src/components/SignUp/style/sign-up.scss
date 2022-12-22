@@ -4,26 +4,53 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 140px 0 100px 0;
 
-  .css-395wrf-MuiFormLabel-root-MuiInputLabel-root{
-    color: #7E7E7E;
-  }
+  .sign-up-container__inputs{
+    .css-pe71c0-MuiInputBase-root-MuiOutlinedInput-root{
+      @include font(16px, 26px);
+    }
 
-  .css-yhypab-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
-    color: #7E7E7E;
-  }
+    .css-dmmspl-MuiFormGroup-root{
+      width: 380px;
+      @media (max-width: 600px){
+        width: 320px;
+      }
+    }
 
-  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: #D0CFCF;
-  }
+    .css-1rv3ei8-MuiFormControl-root-MuiTextField-root:nth-child(2){
+      margin: 50px 0 50px 0;
+    }
 
-  .label-phone{
-    color: #7E7E7E;
-    margin-left: 14px;
+    .css-1rv3ei8-MuiFormControl-root-MuiTextField-root:first-child{
+      margin-top: 50px ;
+    }
+
+    .css-395wrf-MuiFormLabel-root-MuiInputLabel-root{
+      color: #7E7E7E;
+    }
+
+    .css-yhypab-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+      color: #7E7E7E;
+    }
+
+    .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: #D0CFCF;
+    }
+
+    .label-phone{
+      color: #7E7E7E;
+      margin: 4px 0  25px 14px;
+    }
   }
 
   .upload{
+    margin: 50px 0 50px 0;
     display: flex;
+
+    .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+      width: 100%;
+    }
 
     .css-1ylzy12-MuiButtonBase-root-MuiButton-root{
       border-color: #000000;

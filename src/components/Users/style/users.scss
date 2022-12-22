@@ -1,0 +1,7 @@
+@import "src/style/mixin";
+
+.users-container{
+  margin-top: 140px;
+  @include flex(center,center);
+  flex-direction: column;
+}

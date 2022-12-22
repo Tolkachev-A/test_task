@@ -1,8 +1,19 @@
 @import "src/style/mixin";
 
 .card-container {
+  margin: 50px 0 50px 0;
   padding: 20px;
   border-radius: 10px;
+  box-sizing: border-box;
+
+  .tooltip{
+    cursor: pointer;
+  }
+
+  .css-o69gx8-MuiCardMedia-root{
+    width: 70px;
+    margin: 0 auto;
+  }
 
   .css-46bh2p-MuiCardContent-root{
     padding: 0;

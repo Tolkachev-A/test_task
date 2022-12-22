@@ -2,11 +2,10 @@ import React, { ReactElement, useState } from 'react';
 
 import './style/sign-up.scss';
 
-import { Button, FormControl, FormGroup, TextField } from '@mui/material';
+import { Box, Button, FormControl, FormGroup, TextField } from '@mui/material';
 import { useFormik } from 'formik';
 
-import { CustomButton } from 'components/common/CustomButton';
-import { H1 } from 'components/common/H1';
+import { H1, CustomButton } from 'components/common';
 import { CustomRadio } from 'components/RadioGroup';
 
 export const SignUp = (): ReactElement => {
@@ -38,11 +37,11 @@ export const SignUp = (): ReactElement => {
   });
 
   return (
-    <div className="sign-up-container">
+    <div id="sign-up" className="sign-up-container">
       <H1 title="Working with POST request" />
 
       <form onSubmit={formik.handleSubmit}>
-        <FormControl>
+        <FormControl className="sign-up-container__inputs">
           <FormGroup>
             <TextField
               helperText={formik.errors.name}
@@ -83,7 +82,9 @@ export const SignUp = (): ReactElement => {
               <TextField disabled id="outlined-name" label="Upload your photo" />
             </div>
 
-            <CustomButton title="Sign up" type="submit" />
+            <Box display="flex" justifyContent="center">
+              <CustomButton title="Sign up" type="submit" />
+            </Box>
           </FormGroup>
         </FormControl>
       </form>

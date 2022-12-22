@@ -1,7 +1,9 @@
 import React, { ReactElement } from 'react';
 
-import logo from 'assets/svg/logo.svg';
-import { CustomButton } from 'components/common/CustomButton';
+import { Link } from 'react-scroll';
+
+import logo from 'assets/svg/Logo.svg';
+import { CustomButton } from 'components/common';
 
 import './style/nav.scss';
 
@@ -11,11 +13,14 @@ export const Nav = (): ReactElement => {
       <div className="nav">
         <div className="logo">
           <img src={logo} alt="logo" />
-          <span>TESTTASK</span>
         </div>
         <div className="btn-block">
-          <CustomButton title="Users" />
-          <CustomButton title="Sign up" />
+          <Link to="user" smooth duration={500}>
+            <CustomButton title="Users" />
+          </Link>
+          <Link to="sign-up" smooth duration={500}>
+            <CustomButton title="Sign up" />
+          </Link>
         </div>
       </div>
     </div>
