@@ -9,18 +9,30 @@ import {
 } from '@mui/material';
 
 import './style/custom-radio.scss';
+import { PositionsType } from 'store/types';
 
 type CustomRadioType = {
-  value: string;
-  handelRadioGroupChange: Dispatch<SetStateAction<string>>;
+  value: number;
+  itemsRadio: PositionsType[];
+  handelRadioGroupChange: Dispatch<SetStateAction<number>>;
 };
 export const CustomRadio = ({
   value,
+  itemsRadio,
   handelRadioGroupChange,
 }: CustomRadioType): ReactElement => {
   const onRadioGroupChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    handelRadioGroupChange(e.currentTarget.value);
+    handelRadioGroupChange(+e.currentTarget.value);
   };
+
+  const itemFormControlLabel = itemsRadio.map(item => (
+    <FormControlLabel
+      key={item.id}
+      value={item.id}
+      control={<Radio />}
+      label={item.name}
+    />
+  ));
 
   return (
     <FormControl className="radio-container">
@@ -31,14 +43,7 @@ export const CustomRadio = ({
         name="radio-buttons-group"
         onChange={onRadioGroupChange}
       >
-        <FormControlLabel
-          value="frontend"
-          control={<Radio />}
-          label="Frontend developer"
-        />
-        <FormControlLabel value="backend" control={<Radio />} label="Backend developer" />
-        <FormControlLabel value="designer" control={<Radio />} label="Designer" />
-        <FormControlLabel value="qa" control={<Radio />} label="QA" />
+        {itemFormControlLabel}
       </RadioGroup>
     </FormControl>
   );

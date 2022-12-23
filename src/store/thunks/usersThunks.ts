@@ -1,21 +1,29 @@
 import { api } from 'api';
-import { setIsInitializedApp } from 'store/actions';
+import { setIsInitializedApp, setUsersPositions } from 'store/actions';
 import {
   setDataUsers,
   setNextUsers,
+  setToken,
   setUsersStatusLoading,
 } from 'store/actions/usesrsAction';
 import { AppThunkType, DataNextUsersType, QueryUsersParamsType } from 'store/types';
 
-export const getUsers =
+export const getInitializedApp =
   (params: QueryUsersParamsType): AppThunkType =>
   async dispatch => {
     try {
       dispatch(setUsersStatusLoading('loading'));
 
-      const res = await api.getUsers(params);
+      const res = await Promise.all([
+        api.getUsers(params),
+        api.getUsersPositions(),
+        api.getToKen(),
+      ]);
 
-      dispatch(setDataUsers(res.data));
+      dispatch(setDataUsers(res[0].data));
+      dispatch(setUsersPositions(res[1].data.positions));
+      // eslint-disable-next-line no-magic-numbers
+      dispatch(setToken(res[2].data.token));
       dispatch(setIsInitializedApp());
       dispatch(setUsersStatusLoading('succeeded'));
     } catch (e) {
@@ -24,7 +32,7 @@ export const getUsers =
   };
 
 export const getNextUser =
-  (page: number): AppThunkType =>
+  (page: number, removePrevUsers = false): AppThunkType =>
   async dispatch => {
     try {
       dispatch(setUsersStatusLoading('loading'));
@@ -35,6 +43,7 @@ export const getNextUser =
         page: res.data.page,
         users: res.data.users,
         links: res.data.links,
+        removePrevUsers,
       };
 
       dispatch(setNextUsers(date));

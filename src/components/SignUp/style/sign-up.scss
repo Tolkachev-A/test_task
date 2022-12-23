@@ -48,25 +48,38 @@
     margin: 50px 0 50px 0;
     display: flex;
 
-    .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+    .upload__text-field{
       width: 100%;
+
+      .css-1wc848c-MuiFormHelperText-root.Mui-error {
+        color: #d32f2f;
+        position: absolute;
+        bottom: -30px;
+        left: -80px;
+      }
+
+      .Mui-disabled>fieldset{
+        border-left: none;
+        border-radius: 0 4px 4px 0 ;
+      }
     }
 
-    .css-1ylzy12-MuiButtonBase-root-MuiButton-root{
-      border-color: #000000;
+    .upload__btn{
+      max-height: 56px;
+      border: 1px solid #000000;
       border-radius: 4px 0 0 4px;
       color: #000000;
       @include font(16px, 26px);
       text-transform: none;
+      &:hover{
+        background-color: inherit;
+      }
     }
   }
 
-  .css-395wrf-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
+  .upload__input{
     @include font(16px, 26px);
     color: #7E7E7E;
-  }
-
-  .css-pe71c0-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline{
-    border-radius: 0 4px 4px 0;
+    border-left: none;
   }
 }

@@ -5,4 +5,5 @@ export type DataNextUsersType = {
   page: number;
   links: LinksType;
   users: UserType[];
+  removePrevUsers: boolean;
 };

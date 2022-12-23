@@ -11,6 +11,7 @@ export type {
   SetNextUsersType,
   SetDataUsersType,
   SetStatusLoadingType,
+  SetTokenType,
 } from './ActionUsersType';
 export type { DataNextUsersType } from './DataSetNextUsersType';
 export type { StatusType } from './StatusType';

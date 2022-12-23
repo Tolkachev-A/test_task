@@ -5,6 +5,7 @@ import {
   SetDataUsersType,
   SetNextUsersType,
   SetStatusLoadingType,
+  SetTokenType,
   StatusType,
 } from 'store/types';
 
@@ -20,5 +21,10 @@ export const setNextUsers = (payload: DataNextUsersType): SetNextUsersType => ({
 
 export const setUsersStatusLoading = (payload: StatusType): SetStatusLoadingType => ({
   type: UsersActionType.SET_USERS_STATUS_LOADING,
+  payload,
+});
+
+export const setToken = (payload: string): SetTokenType => ({
+  type: UsersActionType.SET_TOKEN,
   payload,
 });

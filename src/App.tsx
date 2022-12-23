@@ -9,8 +9,7 @@ import { Patch } from 'enums';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { Home, NotFound, Registered } from 'pages';
 import { selectCount, selectIsInitializedApp, selectPage } from 'store/selectors';
-import { getUsers } from 'store/thunks';
-import { getUsersPositions } from 'store/thunks/signUpThinks';
+import { getInitializedApp } from 'store/thunks';
 
 const App = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -20,11 +19,9 @@ const App = (): ReactElement => {
   const count = useAppSelector(selectCount);
 
   useEffect(() => {
-    dispatch(getUsersPositions());
-    dispatch(getUsers({ page, count }));
+    dispatch(getInitializedApp({ page, count }));
   }, []);
-  // eslint-disable-next-line no-debugger
-  debugger;
+
   if (!isInitializedApp) {
     return <Preloader />;
   }

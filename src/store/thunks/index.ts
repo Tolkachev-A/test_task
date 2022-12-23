@@ -1,1 +1,2 @@
-export { getNextUser, getUsers } from './usersThunks';
+export { getNextUser, getInitializedApp } from './usersThunks';
+export { executeRegistrationUser } from './signUpThinks';

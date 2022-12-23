@@ -1,16 +1,26 @@
 import { api } from 'api';
-import { setSignUpStatusLoading, setUsersPositions } from 'store/actions';
-import { AppThunkType } from 'store/types';
+import { setSignUpStatusLoading } from 'store/actions';
+import { getNextUser } from 'store/thunks/usersThunks';
+import { AppStoreType, AppThunkType } from 'store/types';
 
-export const getUsersPositions = (): AppThunkType => async dispatch => {
-  try {
-    dispatch(setSignUpStatusLoading('loading'));
+export const executeRegistrationUser =
+  (data: FormData): AppThunkType =>
+  async (dispatch, getState: () => AppStoreType) => {
+    try {
+      dispatch(setSignUpStatusLoading('loading'));
 
-    const res = await api.getUsersPositions();
+      const { token } = getState().users;
 
-    dispatch(setUsersPositions(res.data.positions));
-    dispatch(setSignUpStatusLoading('succeeded'));
-  } catch (e) {
-    console.log(e);
-  }
-};
+      if (token) {
+        const res = await api.setRegistrationUser(token, data);
+
+        if (res.data.success) {
+          dispatch(getNextUser(1, true));
+        }
+      }
+
+      dispatch(setSignUpStatusLoading('succeeded'));
+    } catch (e) {
+      console.log(e);
+    }
+  };

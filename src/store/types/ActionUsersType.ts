@@ -3,7 +3,11 @@ import { UsersActionType } from 'enums';
 import { DataNextUsersType } from 'store/types/DataSetNextUsersType';
 import { StatusType } from 'store/types/StatusType';
 
-export type ActionUsersType = SetDataUsersType | SetNextUsersType | SetStatusLoadingType;
+export type ActionUsersType =
+  | SetDataUsersType
+  | SetNextUsersType
+  | SetStatusLoadingType
+  | SetTokenType;
 
 export type SetDataUsersType = {
   type: UsersActionType.SET_DATA_USERS;
@@ -18,4 +22,8 @@ export type SetNextUsersType = {
 export type SetStatusLoadingType = {
   type: UsersActionType.SET_USERS_STATUS_LOADING;
   payload: StatusType;
+};
+export type SetTokenType = {
+  type: UsersActionType.SET_TOKEN;
+  payload: string;
 };

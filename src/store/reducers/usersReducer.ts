@@ -1,5 +1,6 @@
 import { UsersActionType } from 'enums';
 import { ActionUsersType, UsersStateType } from 'store/types';
+import { getNewUsers } from 'utils';
 
 const initUsersState: UsersStateType = {
   statusLoading: 'idle',
@@ -10,6 +11,7 @@ const initUsersState: UsersStateType = {
   total_pages: null,
   links: { next_url: null, prev_url: null },
   users: [],
+  token: null,
 };
 
 export const usersReducer = (
@@ -27,8 +29,17 @@ export const usersReducer = (
       return {
         ...state,
         page: action.payload.page,
-        users: [...state.users, ...action.payload.users],
+        users: getNewUsers(
+          state.users,
+          action.payload.users,
+          action.payload.removePrevUsers,
+        ),
         links: action.payload.links,
+      };
+    case UsersActionType.SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload,
       };
     case UsersActionType.SET_USERS_STATUS_LOADING:
       return {

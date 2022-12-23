@@ -7,6 +7,7 @@ import {
   SetDataUsersType,
   SetNextUsersType,
   SetStatusLoadingType,
+  SetTokenType,
 } from 'store/types/ActionUsersType';
 
 export type ActionType =
@@ -15,4 +16,5 @@ export type ActionType =
   | SetIsInitializedAppType
   | SetStatusLoadingType
   | SetSignUpStatusLoadingType
-  | SetUsersPositionsType;
+  | SetUsersPositionsType
+  | SetTokenType;

@@ -1,4 +1,4 @@
-import { AppStoreType, StatusType, UserType } from 'store/types';
+import { AppStoreType, PositionsType, StatusType, UserType } from 'store/types';
 import { NullableType } from 'store/types/NullableType';
 
 export const selectPage = (state: AppStoreType): number => state.users.page;
@@ -15,3 +15,9 @@ export const selectIsInitializedApp = (state: AppStoreType): boolean =>
 
 export const selectUserStatusLoading = (state: AppStoreType): StatusType =>
   state.users.statusLoading;
+
+export const selectSingUpStatusLoading = (state: AppStoreType): StatusType =>
+  state.signUp.statusLoading;
+
+export const selectPositions = (state: AppStoreType): PositionsType[] =>
+  state.signUp.positions;
