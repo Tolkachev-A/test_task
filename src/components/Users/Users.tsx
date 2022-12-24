@@ -40,7 +40,6 @@ export const Users = (): ReactElement => {
 
   const isDisabled = statusLoading === 'loading' || nextUrl === null;
 
-  console.log(statusLoading);
   const handelShowMoreClick = (): void => {
     dispatch(getNextUser(page + 1));
   };

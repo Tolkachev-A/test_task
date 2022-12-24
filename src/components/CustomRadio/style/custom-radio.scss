@@ -8,9 +8,9 @@
 
   .css-rd7gxz-MuiFormLabel-root{
     color: #000000;
-  }
 
-  .css-rd7gxz-MuiFormLabel-root.Mui-focused{
-    color: #000000;
+    &.Mui-focused{
+      color: #000000;
+    }
   }
 }

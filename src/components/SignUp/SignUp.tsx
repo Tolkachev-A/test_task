@@ -13,6 +13,7 @@ import { executeRegistrationUser } from 'store/thunks';
 import { getValidateForm } from 'utils';
 
 const MAX_SIZE_IMG = 5e7;
+const MIN_SIZE_IMG = 70;
 
 export const SignUp = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -50,24 +51,38 @@ export const SignUp = (): ReactElement => {
     },
   });
 
+  const isErrorName = formik.touched.name && !!formik.errors.name;
+  const isErrorEmail = formik.touched.email && !!formik.errors.email;
+  const isErrorPhone = formik.touched.phone && !!formik.errors.phone;
+  const isErrorPhoto = formik.touched.photo && errorUploadImg;
+
   const onUploadChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    formik.touched.photo = true;
+
     const file = e.target.files && e.target.files[0];
 
     if (file && file.size < MAX_SIZE_IMG) {
-      setFileImage(file);
-      setNameImage(file.name);
-      setErrorUploadImg('');
+      const myImage = new Image();
+
+      myImage.src = URL.createObjectURL(file);
+
+      myImage.onload = () => {
+        if (myImage.height > MIN_SIZE_IMG && myImage.width > MIN_SIZE_IMG) {
+          setFileImage(file);
+          setNameImage(file.name);
+          setErrorUploadImg('');
+
+          return;
+        }
+
+        setErrorUploadImg('Min size 70X70');
+      };
 
       return;
     }
 
     setErrorUploadImg('Max size 50mb');
   };
-
-  const isErrorName = formik.touched.name && !!formik.errors.name;
-  const isErrorEmail = formik.touched.email && !!formik.errors.email;
-  const isErrorPhone = formik.touched.phone && !!formik.errors.phone;
-  const isErrorPhoto = formik.touched.photo && errorUploadImg;
 
   return (
     <div id="sign-up" className="sign-up-container">
@@ -77,6 +92,7 @@ export const SignUp = (): ReactElement => {
         <FormControl className="sign-up-container__inputs">
           <FormGroup>
             <TextField
+              className="sign-up__input"
               error={isErrorName}
               helperText={formik.touched.name && formik.errors.name}
               variant="outlined"
@@ -85,6 +101,7 @@ export const SignUp = (): ReactElement => {
               {...formik.getFieldProps('name')}
             />
             <TextField
+              className="sign-up__input"
               error={isErrorEmail}
               helperText={formik.touched.email && formik.errors.email}
               label="Email"
@@ -94,6 +111,7 @@ export const SignUp = (): ReactElement => {
             />
 
             <TextField
+              className="sign-up__input"
               error={isErrorPhone}
               helperText={formik.touched.phone && formik.errors.phone}
               label="Phone"

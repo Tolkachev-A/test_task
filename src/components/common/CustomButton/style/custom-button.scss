@@ -3,11 +3,6 @@
 .btn{
   height: 34px;
 
-  &.css-dhois2-MuiButtonBase-root-MuiButton-root.Mui-disabled{
-    color: #FFFFFF;
-    background-color: #B4B4B4;
-  }
-
   &.css-dhois2-MuiButtonBase-root-MuiButton-root{
     @include font(16px,26px);
     border-radius: 80px;
@@ -15,6 +10,11 @@
     text-transform: none;
     color: rgba(0, 0, 0, 0.87);
     white-space: normal;
+
+    &.Mui-disabled{
+      color: #FFFFFF;
+      background-color: #B4B4B4;
+    }
 
     &:hover{
       background-color: #FFE302;
