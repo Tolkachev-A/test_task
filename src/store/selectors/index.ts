@@ -10,7 +10,7 @@ export const selectUsers = (state: AppStoreType): UserType[] => state.users.user
 export const selectNextUrl = (state: AppStoreType): NullableType<string> =>
   state.users.links.next_url;
 
-export const selectIsInitializedApp = (state: AppStoreType): boolean =>
+export const selectIsInitializedApp = (state: AppStoreType): NullableType<boolean> =>
   state.app.isInitializedApp;
 
 export const selectUserStatusLoading = (state: AppStoreType): StatusType =>
@@ -21,3 +21,5 @@ export const selectSingUpStatusLoading = (state: AppStoreType): StatusType =>
 
 export const selectPositions = (state: AppStoreType): PositionsType[] =>
   state.signUp.positions;
+
+export const selectError = (state: AppStoreType): NullableType<string> => state.app.error;

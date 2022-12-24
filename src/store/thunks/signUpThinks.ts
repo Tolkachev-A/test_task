@@ -1,7 +1,10 @@
+import { AxiosError } from 'axios';
+
 import { api } from 'api';
 import { setSignUpStatusLoading } from 'store/actions';
 import { getNextUser } from 'store/thunks/usersThunks';
 import { AppStoreType, AppThunkType } from 'store/types';
+import { handleServerNetworkError } from 'utils';
 
 export const executeRegistrationUser =
   (data: FormData): AppThunkType =>
@@ -21,6 +24,7 @@ export const executeRegistrationUser =
 
       dispatch(setSignUpStatusLoading('succeeded'));
     } catch (e) {
-      console.log(e);
+      handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch);
+      dispatch(setSignUpStatusLoading('failed'));
     }
   };

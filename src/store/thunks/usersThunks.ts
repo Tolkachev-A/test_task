@@ -1,3 +1,5 @@
+import { AxiosError } from 'axios';
+
 import { api } from 'api';
 import { setIsInitializedApp, setUsersPositions } from 'store/actions';
 import {
@@ -7,6 +9,7 @@ import {
   setUsersStatusLoading,
 } from 'store/actions/usesrsAction';
 import { AppThunkType, DataNextUsersType, QueryUsersParamsType } from 'store/types';
+import { handleServerNetworkError } from 'utils';
 
 export const getInitializedApp =
   (params: QueryUsersParamsType): AppThunkType =>
@@ -24,10 +27,12 @@ export const getInitializedApp =
       dispatch(setUsersPositions(res[1].data.positions));
       // eslint-disable-next-line no-magic-numbers
       dispatch(setToken(res[2].data.token));
-      dispatch(setIsInitializedApp());
+      dispatch(setIsInitializedApp(true));
       dispatch(setUsersStatusLoading('succeeded'));
     } catch (e) {
-      console.log(e);
+      handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch);
+      dispatch(setUsersStatusLoading('failed'));
+      dispatch(setIsInitializedApp(false));
     }
   };
 
@@ -49,6 +54,7 @@ export const getNextUser =
       dispatch(setNextUsers(date));
       dispatch(setUsersStatusLoading('succeeded'));
     } catch (e) {
-      console.log(e);
+      handleServerNetworkError(e as Error | AxiosError<{ error: string }>, dispatch);
+      dispatch(setUsersStatusLoading('failed'));
     }
   };

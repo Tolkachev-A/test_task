@@ -1,0 +1,1 @@
+export { SuccessfullyRegistered } from './SuccessfullyRegistered';

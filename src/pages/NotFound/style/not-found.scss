@@ -1,0 +1,46 @@
+@import "src/style/mixin";
+
+.main-box-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    margin: auto;
+    @include flex(center,center);
+    flex-direction: column;
+    background-color: #95c2de;
+
+    .main-box{
+        margin: 50px 10px;
+        @include flex(center,center);
+        color: #ffffff;
+        @include font(11rem,26px);
+
+        .far {
+            font-size: 8.5rem;
+        }
+    }
+
+    & a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .msg {
+        width: 75%;
+        @include font(1.6rem,26px);
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+
+
+

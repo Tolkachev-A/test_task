@@ -15,7 +15,11 @@ export type {
 } from './ActionUsersType';
 export type { DataNextUsersType } from './DataSetNextUsersType';
 export type { StatusType } from './StatusType';
-export type { ActionAppType, SetIsInitializedAppType } from './ActionAppType';
+export type {
+  ActionAppType,
+  SetIsInitializedAppType,
+  SetErrorType,
+} from './ActionAppType';
 export type {
   ActionSignUpType,
   SetUsersPositionsType,

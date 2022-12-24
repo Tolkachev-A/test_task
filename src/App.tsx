@@ -1,14 +1,18 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import 'App.scss';
-import { Container } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 
 import { Preloader } from 'components/common';
+import { ErrorMessage } from 'components/common/ErrorMessage';
 import { Patch } from 'enums';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { Home, NotFound, Registered } from 'pages';
-import { selectCount, selectIsInitializedApp, selectPage } from 'store/selectors';
+import { Home, NotFound } from 'pages';
+import {
+  selectCount,
+  selectError,
+  selectIsInitializedApp,
+  selectPage,
+} from 'store/selectors';
 import { getInitializedApp } from 'store/thunks';
 
 const App = (): ReactElement => {
@@ -17,23 +21,27 @@ const App = (): ReactElement => {
   const isInitializedApp = useAppSelector(selectIsInitializedApp);
   const page = useAppSelector(selectPage);
   const count = useAppSelector(selectCount);
+  const error = useAppSelector(selectError);
 
   useEffect(() => {
     dispatch(getInitializedApp({ page, count }));
   }, []);
 
-  if (!isInitializedApp) {
+  if (isInitializedApp === null) {
     return <Preloader />;
+  }
+  if (!isInitializedApp && error) {
+    return <ErrorMessage title={error} />;
   }
 
   return (
-    <Container className="app">
+    <>
       <Routes>
         <Route path={Patch.HOME} element={<Home />} />
-        <Route path={Patch.SUCCESSFULLY_REGISTERED} element={<Registered />} />
         <Route path={Patch.NOT_FOUND} element={<NotFound />} />
       </Routes>
-    </Container>
+      {error && <ErrorMessage title={error} />}
+    </>
   );
 };
 
