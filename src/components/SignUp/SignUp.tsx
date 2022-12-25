@@ -12,7 +12,7 @@ import { selectPositions, selectSingUpStatusLoading } from 'store/selectors';
 import { executeRegistrationUser } from 'store/thunks';
 import { getValidateForm } from 'utils';
 
-const MAX_SIZE_IMG = 5e7;
+const MAX_SIZE_IMG = 5e6;
 const MIN_SIZE_IMG = 70;
 
 export const SignUp = (): ReactElement => {
@@ -67,6 +67,7 @@ export const SignUp = (): ReactElement => {
       myImage.src = URL.createObjectURL(file);
 
       myImage.onload = () => {
+        URL.revokeObjectURL(myImage.src);
         if (myImage.height > MIN_SIZE_IMG && myImage.width > MIN_SIZE_IMG) {
           setFileImage(file);
           setNameImage(file.name);
@@ -77,12 +78,11 @@ export const SignUp = (): ReactElement => {
 
         setErrorUploadImg('Min size 70X70');
       };
-      URL.revokeObjectURL(myImage.src);
 
       return;
     }
 
-    setErrorUploadImg('Max size 50mb');
+    setErrorUploadImg('Max size 5 mb');
   };
 
   return (
