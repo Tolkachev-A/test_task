@@ -49,7 +49,7 @@ export const Users = (): ReactElement => {
       <H1 title="Working with GET request" />
       <Box sx={{ flexGrow: 1 }}>
         {/* eslint-disable-next-line no-magic-numbers */}
-        <Grid container spacing={[2, 2, 2, 2]}>
+        <Grid container spacing={2.5} my={5}>
           {usersMap}
         </Grid>
       </Box>

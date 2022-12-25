@@ -1,6 +1,7 @@
 {
   "name": "test_task",
   "version": "0.1.0",
+  "homepage": "https://tolkachev-a.github.io/test_task",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -38,7 +39,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -66,6 +69,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.8.1"
   }
 }

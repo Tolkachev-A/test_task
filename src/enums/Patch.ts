@@ -1,4 +1,4 @@
 export enum Patch {
-  HOME = '/',
+  HOME = '/test_task',
   NOT_FOUND = '*',
 }

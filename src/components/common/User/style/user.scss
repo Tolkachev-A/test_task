@@ -1,29 +1,28 @@
 @import "src/style/mixin";
 
 .card-container {
-  margin: 50px 0 50px 0;
-  padding: 20px;
   border-radius: 10px;
   box-sizing: border-box;
 
-  .tooltip{
-    cursor: pointer;
-  }
-
-  .css-o69gx8-MuiCardMedia-root{
+  .card-img{
+    height: 70px;
     width: 70px;
-    margin: 0 auto;
+    border-radius: 50%;
+    margin: 20px auto;
   }
 
-  .css-46bh2p-MuiCardContent-root{
+  .description{
     padding: 0;
 
-    &:last-child{
+    .description__tooltip{
       padding: 0;
+      cursor: pointer;
+      @include font(16px, 26px);
     }
-  }
 
-  .css-1mdurtu-MuiTypography-root{
-    @include font(16px, 26px);
+    &:last-child,:first-child{
+      margin: 20px;
+      padding: 0px;
+    }
   }
 }

@@ -7,19 +7,16 @@
   margin: 140px 0 100px 0;
 
   .sign-up-container__inputs{
-    .css-pe71c0-MuiInputBase-root-MuiOutlinedInput-root{
+    width: 380px;
+    @media (max-width: 600px){
+      width: 320px;
+    }
+
+    .MuiInputBase-rootm, .MuiInputLabel-root{
       @include font(16px, 26px);
     }
 
-    .css-dmmspl-MuiFormGroup-root{
-      width: 380px;
-      @media (max-width: 600px){
-        width: 320px;
-      }
-    }
-
     .sign-up__input{
-
       &:nth-child(2){
         margin: 50px 0 50px 0;
       }
@@ -33,17 +30,14 @@
       }
     }
 
-
-    .css-395wrf-MuiFormLabel-root-MuiInputLabel-root{
+    label.Mui-focused{
       color: #7E7E7E;
     }
 
-    .css-yhypab-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
-      color: #7E7E7E;
-    }
-
-    .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border-color: #D0CFCF;
+    .MuiOutlinedInput-root{
+      &.Mui-focused fieldset{
+        border-color: #D0CFCF;
+      }
     }
 
     .label-phone{
@@ -59,7 +53,8 @@
     .upload__text-field{
       width: 100%;
 
-      .css-1wc848c-MuiFormHelperText-root.Mui-error {
+
+      .MuiFormHelperText-root {
         color: #d32f2f;
         position: absolute;
         bottom: -30px;
@@ -91,3 +86,4 @@
     border-left: none;
   }
 }
+

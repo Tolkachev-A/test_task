@@ -38,6 +38,7 @@ export const CustomRadio = ({
     <FormControl className="radio-container">
       <FormLabel id="radio">Select your position</FormLabel>
       <RadioGroup
+        className="radio"
         aria-labelledby="radio"
         value={value}
         name="radio-buttons-group"

@@ -23,24 +23,23 @@ export const User = ({ name, email, phone, photo, position }: UserType): ReactEl
     <Grid display="flex" justifyContent="center" xs={12} sm={6} md={4}>
       <Card sx={{ maxWidth: '344px', width: '100%' }} className="card-container">
         <CardMedia
+          className="card-img"
           component="img"
-          height="70"
-          width="70"
           image={photo || baseImg}
           alt="green iguana"
         />
-        <CardContent>
-          <Tooltip className="tooltip" title={name}>
+        <CardContent className="description">
+          <Tooltip className="description__tooltip" title={name}>
             <Typography align="center" pt={2.5} noWrap component="div">
               {name}
             </Typography>
           </Tooltip>
-          <Tooltip className="tooltip" title={position}>
+          <Tooltip className="description__tooltip" title={position}>
             <Typography align="center" pt={2.5} noWrap component="div">
               {position}
             </Typography>
           </Tooltip>
-          <Tooltip className="tooltip" title={email}>
+          <Tooltip className="description__tooltip" title={email}>
             <Typography align="center" noWrap component="div">
               {email}
             </Typography>

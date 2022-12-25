@@ -2,6 +2,7 @@
 
 .h1{
   @include font(40px,40px);
+  margin: 0;
   padding: 0 10px;
   text-align: center;
 }
