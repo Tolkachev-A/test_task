@@ -77,6 +77,7 @@ export const SignUp = (): ReactElement => {
 
         setErrorUploadImg('Min size 70X70');
       };
+      URL.revokeObjectURL(myImage.src);
 
       return;
     }
