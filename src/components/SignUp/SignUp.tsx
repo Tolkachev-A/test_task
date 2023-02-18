@@ -167,7 +167,7 @@ export const SignUp = (): ReactElement => {
 
             <Box display="flex" justifyContent="center">
               <CustomButton
-                disabled={isLoading === 'loading'}
+                disabled={isLoading === 'loading' || !formik.isValid || !formik.dirty}
                 title="Sign up"
                 type="submit"
               />

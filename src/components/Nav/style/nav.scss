@@ -1,7 +1,7 @@
 @import "src/style/mixin";
 
 .nav-container{
-  margin: 0 2%;
+  background-color: #FFF;
   .nav{
     @include flex(space-between,center);
     height: 60px;
@@ -14,8 +14,21 @@
       }
     }
 
-    .btn-block button:first-child{
+
+    .btn-block a{
+      width: 100px;
+      height: 32px;
+      display: inline-block;
+    }
+    .btn-block a:first-child{
       margin-right: 10px;
     }
+  }
+
+
+}
+@media screen and (max-width: 1024px) {
+  .nav-container{
+    padding: 0 60px;
   }
 }

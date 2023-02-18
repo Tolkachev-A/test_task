@@ -2,8 +2,7 @@ import React, { ReactElement, useMemo } from 'react';
 
 import './style/users.scss';
 
-import { Box } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+import { Grid } from '@mui/material';
 
 import { CustomButton, H1, User } from 'components/common';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -23,7 +22,7 @@ export const Users = (): ReactElement => {
   const nextUrl = useAppSelector(selectNextUrl);
   const statusLoading = useAppSelector(selectUserStatusLoading);
 
-  const usersMap = useMemo(
+  const usersList = useMemo(
     () =>
       users.map(user => (
         <User
@@ -47,12 +46,12 @@ export const Users = (): ReactElement => {
   return (
     <div id="user" className="users-container">
       <H1 title="Working with GET request" />
-      <Box sx={{ flexGrow: 1 }}>
+      <div className="users">
         {/* eslint-disable-next-line no-magic-numbers */}
-        <Grid container spacing={2.5} my={5}>
-          {usersMap}
+        <Grid container spacing={3.625} my={6.25} justifyContent="space-between">
+          {usersList}
         </Grid>
-      </Box>
+      </div>
       <CustomButton
         disabled={isDisabled}
         onClick={handelShowMoreClick}

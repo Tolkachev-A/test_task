@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 
 import { Link } from 'react-scroll';
 
-import logo from 'assets/img/Logo.webp';
+import logo from 'assets/svg/Logo.svg';
 import { CustomButton } from 'components/common';
 
 import './style/nav.scss';

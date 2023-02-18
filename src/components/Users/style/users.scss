@@ -4,4 +4,11 @@
   margin-top: 140px;
   @include flex(center,center);
   flex-direction: column;
+
+}
+
+@media screen and (max-width: 1024px) {
+  .users{
+    margin: 0 60px;
+  }
 }
