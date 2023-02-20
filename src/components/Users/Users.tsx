@@ -17,6 +17,8 @@ import { getNextUser } from 'store/thunks';
 export const Users = (): ReactElement => {
   const dispatch = useAppDispatch();
 
+  const theme = useTheme();
+
   const users = useAppSelector(selectUsers);
   const page = useAppSelector(selectPage);
   const nextUrl = useAppSelector(selectNextUrl);
@@ -38,15 +40,12 @@ export const Users = (): ReactElement => {
   );
 
   const isDisabled = statusLoading === 'loading' || nextUrl === null;
+  let spacing = 3.625;
+  let mb = 6.25;
 
   const handelShowMoreClick = (): void => {
     dispatch(getNextUser(page + 1));
   };
-  const theme = useTheme();
-  // eslint-disable-next-line no-magic-numbers
-  let spacing = 3.625;
-  // eslint-disable-next-line no-magic-numbers
-  let mb = 6.25;
 
   if (useMediaQuery(theme.breakpoints.down('md'))) {
     // eslint-disable-next-line no-magic-numbers
