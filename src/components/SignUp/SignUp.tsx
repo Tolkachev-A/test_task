@@ -143,17 +143,17 @@ export const SignUp = (): ReactElement => {
                 label={nameImage || 'Upload your photo'}
               />
             </div>
+            <Box
+              style={{ cursor: 'not-allowed' }}
+              typeof="div"
+              display="flex"
+              justifyContent="center"
+            >
+              <CustomButton disabled={isDisabledBtn} title="Sign up" type="submit" />
+            </Box>
           </FormGroup>
         </FormControl>
       </form>
-      <Box
-        style={{ cursor: 'not-allowed' }}
-        typeof="div"
-        display="flex"
-        justifyContent="center"
-      >
-        <CustomButton disabled={isDisabledBtn} title="Sign up" type="submit" />
-      </Box>
     </div>
   );
 };
