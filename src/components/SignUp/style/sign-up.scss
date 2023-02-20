@@ -14,6 +14,7 @@
 
     .MuiInputBase-rootm, .MuiInputLabel-root{
       @include font(16px, 26px);
+      line-height: initial;
     }
 
     .sign-up__input{
@@ -33,8 +34,13 @@
     label.Mui-focused{
       color: #7E7E7E;
     }
+.MuiInputBase-input{
+
+  padding: 14px 16px;
+}
 
     .MuiOutlinedInput-root{
+      height: 54px;
       &.Mui-focused fieldset{
         border-color: #D0CFCF;
       }

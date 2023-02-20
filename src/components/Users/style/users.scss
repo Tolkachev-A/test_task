@@ -4,11 +4,24 @@
   margin-top: 140px;
   @include flex(center,center);
   flex-direction: column;
+  .users{
+    flex-grow: 1;
+  }
 
 }
 
 @media screen and (max-width: 1024px) {
   .users{
     margin: 0 60px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .users{
+    margin: 0 32px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .users{
+    margin: 0 16px;
   }
 }

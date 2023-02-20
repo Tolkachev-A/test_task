@@ -5,6 +5,7 @@
 
   &.MuiButton-root{
     @include font(16px,26px);
+    box-shadow: none;
     border-radius: 80px;
     text-align: center;
     text-transform: none;

@@ -10,10 +10,7 @@ import { CustomRadio } from 'components/CustomRadio';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { selectPositions, selectSingUpStatusLoading } from 'store/selectors';
 import { executeRegistrationUser } from 'store/thunks';
-import { getValidateForm } from 'utils';
-
-const MAX_SIZE_IMG = 5e6;
-const MIN_SIZE_IMG = 70;
+import { getValidateForm, uploadImage } from 'utils';
 
 export const SignUp = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -55,34 +52,16 @@ export const SignUp = (): ReactElement => {
   const isErrorEmail = formik.touched.email && !!formik.errors.email;
   const isErrorPhone = formik.touched.phone && !!formik.errors.phone;
   const isErrorPhoto = formik.touched.photo && errorUploadImg;
+  const isDisabledBtn =
+    isLoading === 'loading' ||
+    !formik.isValid ||
+    !formik.dirty ||
+    !nameImage ||
+    !!errorUploadImg;
 
   const onUploadChange = (e: ChangeEvent<HTMLInputElement>): void => {
     formik.touched.photo = true;
-
-    const file = e.target.files && e.target.files[0];
-
-    if (file && file.size < MAX_SIZE_IMG) {
-      const myImage = new Image();
-
-      myImage.src = URL.createObjectURL(file);
-
-      myImage.onload = () => {
-        URL.revokeObjectURL(myImage.src);
-        if (myImage.height > MIN_SIZE_IMG && myImage.width > MIN_SIZE_IMG) {
-          setFileImage(file);
-          setNameImage(file.name);
-          setErrorUploadImg('');
-
-          return;
-        }
-
-        setErrorUploadImg('Min size 70X70');
-      };
-
-      return;
-    }
-
-    setErrorUploadImg('Max size 5 mb');
+    uploadImage(e, setFileImage, setNameImage, setErrorUploadImg);
   };
 
   return (
@@ -97,7 +76,7 @@ export const SignUp = (): ReactElement => {
               error={isErrorName}
               helperText={formik.touched.name && formik.errors.name}
               variant="outlined"
-              label="Name"
+              label="Your name"
               margin="normal"
               {...formik.getFieldProps('name')}
             />
@@ -164,17 +143,17 @@ export const SignUp = (): ReactElement => {
                 label={nameImage || 'Upload your photo'}
               />
             </div>
-
-            <Box display="flex" justifyContent="center">
-              <CustomButton
-                disabled={isLoading === 'loading' || !formik.isValid || !formik.dirty}
-                title="Sign up"
-                type="submit"
-              />
-            </Box>
           </FormGroup>
         </FormControl>
       </form>
+      <Box
+        style={{ cursor: 'not-allowed' }}
+        typeof="div"
+        display="flex"
+        justifyContent="center"
+      >
+        <CustomButton disabled={isDisabledBtn} title="Sign up" type="submit" />
+      </Box>
     </div>
   );
 };

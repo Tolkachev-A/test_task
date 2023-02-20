@@ -1,12 +1,6 @@
 import React, { ChangeEvent, Dispatch, ReactElement, SetStateAction } from 'react';
 
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-} from '@mui/material';
+import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 
 import './style/custom-radio.scss';
 import { PositionsType } from 'store/types';
@@ -36,7 +30,9 @@ export const CustomRadio = ({
 
   return (
     <FormControl className="radio-container">
-      <FormLabel id="radio">Select your position</FormLabel>
+      <div className="label-radio" id="radio">
+        Select your position
+      </div>
       <RadioGroup
         className="radio"
         aria-labelledby="radio"

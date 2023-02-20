@@ -1,6 +1,16 @@
+@import "src/style/mixin";
 .radio-container{
+  .label-radio{
+    color: black;
+  }
+
+  .MuiTypography-root, .MuiFormLabel-root{
+    @include font(16px,26px)
+  }
+
   .MuiRadio-root{
-    color: #7E7E7E;
+    color: #D0CFCF;
+
     &.Mui-checked{
       color: #00BDD3;
     }

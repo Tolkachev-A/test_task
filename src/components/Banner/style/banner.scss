@@ -31,7 +31,11 @@
   .banner-container{
     background-image: url("../../../assets/img/Baner-1024.jpg");
     background-position: center;
-    background-size: contain;
+    background-size: cover;
   }
-
+}
+@media screen and (max-width: 768px) {
+  .banner-container{
+    height: 500px;
+  }
 }
